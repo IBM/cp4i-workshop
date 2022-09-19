@@ -89,11 +89,13 @@ In this section you'll create a *Connected App* in Salesforce so that the App Co
 
    + Set the **Callback URL** to `https://www.ibm.com`
 
-   + Under **Selected OAuth Scopes** select  **Manager user data via APIs (api)** and click the arrow under the **Add** label
+   + Under **Selected OAuth Scopes** select  **Manage user data via APIs (api)** and click the arrow under the **Add** label
 
   [![](images/sfoauth.png)](images/sfoauth.png)
 
-2.8 Scroll down to the bottom of the web page and click **Save**
+2.8 Scroll down to the bottom of the web page and click **Save**. Click continue on the next window.
+
+2.9 Click **Manage Consumer Details** button.
 
 2.9 Copy the **Consumer Key** and **Consumer Secret** to a text file.  You will need them later to connect to Salesforce.
 
@@ -125,8 +127,9 @@ App Connect Designer is a component of Cloud Pak for Integration that provides a
 
   [![](images/salesforce-connect.png)](images/salesforce-connect.png)
 
+3.5 From the dropdown options, ensure that **Provide a username, password, and client credentials (OAUTH 2.0 PASSWORD)** is selected. Click **Continue**.
 
-3.5 Enter the following values referring to the text file from  the previous section where you saved your Salesforce credentials.
+3.6 Enter the following values referring to the text file from  the previous section where you saved your Salesforce credentials.
 
    + For the **Login URL** enter `https://login.salesforce.com`
 
@@ -142,7 +145,7 @@ App Connect Designer is a component of Cloud Pak for Integration that provides a
 
 > **NOTE**: If you receive an error that the connection to Salesforce failed, then it is recommended to re-check the credentials and try again. You can re-enter the credentials for this account by clicking on the three dots next to the account name and clicking **Update Account** from the subsequent menu. The previous details are cleared, so you will need to enter them all again.   
 
-3.6 Click on **Connect**.
+3.7 Click on **Connect**.
 
 
 ## Section 4: Create the flows in App Connect Designer
@@ -198,7 +201,7 @@ App Connect Designer is a component of Cloud Pak for Integration that provides a
 
    [![](images/implementflow1.png)](images/implementflow1.png)
 
-4.9 Next you'll map the properties from  your model to the Salesforce Contact properties. The properties have the same names as their Salesforce equivalents so click on **Auto match fields** to complete the mapping. Delete test populated for **Account ID**.
+4.9 Next you'll map the properties from  your model to the Salesforce Contact properties. The properties have the same names as their Salesforce equivalents so click on **View Suggestions** and then **Apply Suggestions** to complete the mapping. Delete test populated for **Account ID**.
 
   [![](images/automatchfields.png)](images/automatchfields.png)
 
@@ -226,7 +229,7 @@ App Connect Designer is a component of Cloud Pak for Integration that provides a
 
   [![](images/edittestparams.png)](images/edittestparams.png)
 
-4.13 Click the "Try It" icon in the above screenshot. Verify that the operation returns a 200 HTTP status code.
+4.13 Click the "Try It" icon in the above screenshot. If there is any popup, then click **Continue**. Verify that the operation returns a 200 HTTP status code.
 
    [![](images/viewdetails.png)](images/viewdetails.png)
 
@@ -312,32 +315,31 @@ App Connect Designer is a component of Cloud Pak for Integration that provides a
 
 In this step you'll create an Integration Server instance and deploy your flows to it.
 
-5.1 Go to your Workshop Information page and click on the **App Connect Dashboard** component link. (**Note:** if you no longer have the Workshop Information page available see [these instructions](../pre-work/README.md)).
+5.1 In CP4I home page, click ACE integration server instance `ace-dashboard-demo` or similar to this in your environment.
 
-5.2 If prompted to login enter the credentials on the Workshop Information page.
-
-5.3 Click **Create a server**
+5.2 Click **Create a server**
 
   [![](images/dashboardui.png)](images/dashboardui.png)
 
-5.4 Select the  **Quick start designer integration** tile and click **Next**
+5.3 Select the  **Quick start integration** tile and click **Next**
 
   [![](images/qsdesint.png)](images/qsdesint.png)
 
-5.5 Upload your  `sfevent001.bar` file and click **Next**
+5.4 Upload your  `sfevent001.bar` file and click **Next**
 
   [![](images/sfeventsbar.png)](images/sfeventsbar.png)
 
-5.6 Wait until you see an existing configuration loaded (it can take a few seconds during which time it asks you to create a new config - ignore that) .  Once the config loads, select the **Accounts** type and leave the others unchecked. Click **Next**
+5.5 Wait until you see an existing configuration loaded (it can take a few seconds during which time it asks you to create a new config - ignore that) .  Once the config loads, select the **Accounts** type and leave the others unchecked. Click **Next**
 
   [![](images/accountfile.png)](images/accountfile.png)
 
 > **Note**: Without *Accounts* checked, your flow will  not work when deployed . This allows the secret with your Salesforce credentials to be accessible to the deployed flow.
 
-5.7 Name the server `sfevent001`.
+5.6 Name the server **sfevent001**.
 
-5.8 Ensure that the  **Designer flows type** is set to **event-driven-or-api-flows**
-and click  **Create** .
+5.7 Ensure that **Designer flows mode (optional)** is set to **local**.
+
+5.8 Ensure that the  **Designer flows type** is set to **event-driven-or-api-flows** and click  **Create** .
 
   [![](images/server-details.png)](images/server-details.png)
 
@@ -347,20 +349,22 @@ and click  **Create** .
 
 5.10 Select the **Quick start designer integration** tile and click **Next**
 
-5.9 Upload your `sfpush001.bar` file and click **Next**
+5.11 Upload your `sfpush001.bar` file and click **Next**
 
-5.10 Select the **Accounts** type and leave the others unchecked. Click **Next**
+5.12 Select the **Accounts** type and leave the others unchecked. Click **Next**
 
 > **Note**: Without *Accounts* checked, your flow will  not work when deployed . This allows the secret with your Salesforce credentials to be accessible to the deployed flow.
 
-5.11 Name the server `sfpush001`.
+5.13 Ensure that **Designer flows mode (optional)** is set to **local**.
 
-5.12 Ensure that the  **Designer flows type** is set to **api-flows**
+5.14 Name the server `sfpush001`.
+
+5.15 Ensure that the  **Designer flows type** is set to **api-flows**
 and click  **Create** .
 
   [![](images/server-details2.png)](images/server-details2.png)
 
-5.13 Wait for both servers be in the **Ready** state. They will take about 2 or 3 minutes.
+5.16 Wait for both servers be in the **Ready** state. They will take about 2 or 3 minutes.
 
 > **Note:** You may have to refresh the page to get the latest server status
 
@@ -383,7 +387,7 @@ and click  **Create** .
 
 ## Section 7: Test your App Connect Flows with Trader Lite
 
-7.1 Go to the OpenShift console of your assigned cluster. Select the **cp4i-trial** project. In the navigation on the left select **Installed Operators** and select the **TraderLite Operator**
+7.1 Go to the OpenShift console of your cluster. Select the **cp4i-trial** project. In the navigation on the left select **Installed Operators** and select the **TraderLite Operator**
 
   [![](images/select-traderlite-operator.png)](images/select-traderlite-operator.png)
 

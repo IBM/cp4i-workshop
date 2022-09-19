@@ -35,7 +35,7 @@ This lab is broken up into the following steps:
 
 ## Prerequisites
 
-- API Connect requires the [Firefox](https://www.mozilla.org/en-US/firefox/new/) browser (version > 78.9.0) in order to use the testing capabilities during API development (Step #4 of this lab) so it is recommended that you complete this entire lab using Firefox.
+- API Connect requires the [Firefox](https://www.mozilla.org/en-US/firefox/new/) browser (version > 78.9.0) in order to use the testing capabilities during API development (Step #3 of this lab) so it is recommended that you complete this entire lab using Firefox.
 
 ## Step 1: Download the OpenAPI definition file for the external Stock Quote service
 
@@ -175,9 +175,11 @@ In the API designer, you have the ability to test the API immediately after crea
 
 ## Step 5: Install the TraderLite app
 
-5.1 In a separate browser tab go to the OpenShift console URL  for the cluster assigned to you for the workshop.
+5.1 Install Traderlite operator
 
-5.2 Click on **Projects** in the left navigation and then click on your ***cp4i-trial*** project in the list
+Follow the steps mentioned [here](./exercise-api-connect/README.md) to install Traderlite Operator. 
+
+5.2 In a separate browser tab go to the OpenShift console URL for the OpenShift cluster. Click on **Projects** in the left navigation and then click on the project where CP4I is installed. In this workshop content we have used **cp4i-trial** project.
 
   [![](images/select-traderlite-project.png)](images/select-traderlite-project.png)
 
