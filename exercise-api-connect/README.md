@@ -177,7 +177,7 @@ In the API designer, you have the ability to test the API immediately after crea
 
 5.1 Install Traderlite operator
 
-Follow the steps mentioned [here](./exercise-api-connect/README.md) to install Traderlite Operator. 
+Follow the steps mentioned [here](../pre-work/README.md) to install Traderlite Operator. 
 
 5.2 In a separate browser tab go to the OpenShift console URL for the OpenShift cluster. Click on **Projects** in the left navigation and then click on the project where CP4I is installed. In this workshop content we have used **cp4i-trial** project.
 

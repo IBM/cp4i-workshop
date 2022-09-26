@@ -1,6 +1,8 @@
-# Exercise - Using IBM MQ and Kafka for near realtime data replication
+# Exercise - Using IBM MQ and IBM Event Streams for near realtime data replication
 
 In this lab you will use IBM MQ and IBM Event Streams to replicate data from a transactional database to a reporting database. The pattern used allows for seamless horizontal scaling to minimize the latency between the time the transaction is committed to the transactional database and when it is available to be queried in the reporting database.
+
+> Note: IBM Event Streams offers a fully managed Apache Kafka service, and so you will see Kafka and Kafka Connect being referred to/used in this lab.
 
 The architecture of the solution you will build is shown below:
 
@@ -58,7 +60,7 @@ If you've completed the API Connect and/or the Salesforce integration labs then 
 
 ## Step 2: Add messaging components to the Trader Lite app
 
-In this section you will install the TraderLite app to start storing transactions as MQ messages, without setting up the KafkaConnect part that will move the transactions out of MQ, into Event Streams and then into MongoDB. This demonstrates how MQ can serve as a reliable store and forward buffer especially during temporary network disruption.
+In this section you will install the TraderLite app to start storing transactions as MQ messages, without setting up the Kafka Connect part that will move the transactions out of MQ, into Event Streams and then into MongoDB. This demonstrates how MQ can serve as a reliable store and forward buffer especially during temporary network disruption.
 
 2.1 Click on **Installed Operators** (in the **Operators** section) in the left navigation and then click on the **TraderLite Operator** in the list.
 
@@ -182,6 +184,5 @@ In this section you will configure the TraderLite app to start moving the transa
 Congratulations ! You successfully completed the following key steps in this lab:
 
 * Configured the Trader Lite app to use MQ
-* Deploy Kafka Connect
-* Generated transactions in the Trader Lite app and verified that the data is being replicated via MQ and Kafka.
-Event Streams
+* Deploy IBM Event Streams
+* Generated transactions in the Trader Lite app and verified that the data is being replicated via MQ and IBM Event Streams.
